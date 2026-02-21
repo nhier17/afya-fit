@@ -16,13 +16,14 @@ import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import { dataProvider } from "./providers/data";
 import { Layout } from "./components/refine-ui/layout/layout";
 
-import { LayoutDashboard, Users } from "lucide-react";
+import { LayoutDashboard, Users, DiamondPlus } from "lucide-react";
 
 // Pages
 import Dashboard from "@/pages/dashboard";
 import MembersList from "@/pages/members/list";
 import CreateMember from "@/pages/members/create";
 import MemberDetails from "@/pages/members/show";
+import PackagesList from "@/pages/packages/list";
 
 function App() {
   return (
@@ -51,7 +52,7 @@ function App() {
                 {
                   name: "members",
                   list: "/members",
-                  create: "/members/new",
+                  create: "/members/create",
                   edit: "/members/:id/edit",
                   show: "/members/:id",
                   meta: {
@@ -59,6 +60,14 @@ function App() {
                     icon: <Users />,
                   },
                 },
+                {
+                  name: "packages",
+                  list: "/packages",
+                  meta: {
+                    label: "Packages",
+                    icon: <DiamondPlus />,
+                  },
+                }
               ]}
             >
               <Routes>
@@ -74,6 +83,9 @@ function App() {
                     <Route index element={<MembersList />} />
                     <Route path="create" element={<CreateMember />} />
                     <Route path="show/:id" element={<MemberDetails />} />
+                  </Route>
+                  <Route path="packages">
+                    <Route index element={<PackagesList />} />
                   </Route>
                 </Route>
               </Routes>
