@@ -165,6 +165,7 @@ export function DataTable<TData extends BaseRecord>({
                   <TableRow
                     key={row.original?.id ?? row.id}
                     data-state={row.getIsSelected() && "selected"}
+                    className="h-12"
                   >
                     {row.getVisibleCells().map((cell) => {
                       return (
@@ -176,6 +177,7 @@ export function DataTable<TData extends BaseRecord>({
                               isOverflowing: isOverflowing,
                             }),
                           }}
+                          className="py-3"
                         >
                           <div className="truncate">
                             {flexRender(

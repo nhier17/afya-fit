@@ -1,6 +1,7 @@
 export type Member = {
     id: number,
-    name: string,
+    firstName: string,
+    lastName: string,
     phone: string,
     gender: string,
     createdAt: string,

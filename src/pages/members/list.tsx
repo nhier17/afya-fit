@@ -27,13 +27,17 @@ const MembersList = () => {
       },
       {
         id: "name",
-        accessorKey: "name",
+        header: () => <p className="column-title">Full Name</p>,
         size: 200,
-        header: () => <p className="column-title">Name</p>,
-        cell: ({ getValue }) => (
-          <span className="text-foreground">{getValue<string>()}</span>
-        ),
-        filterFn: "includesString",
+        cell: ({ row }) => {
+          const { firstName, lastName } = row.original;
+
+          return (
+              <span className="text-base text-foreground">
+        {firstName} {lastName}
+      </span>
+          );
+        },
       },
       {
         id: "phone",
@@ -41,7 +45,7 @@ const MembersList = () => {
         size: 200,
         header: () => <p className="column-title">Phone</p>,
         cell: ({ getValue }) => (
-          <span className="text-foreground">{getValue<string>()}</span>
+          <span className="text-base text-foreground">{getValue<string>()}</span>
         ),
       },
       {
@@ -50,7 +54,7 @@ const MembersList = () => {
         size: 100,
         header: () => <p className="column-title">Gender</p>,
         cell: ({ getValue }) => (
-          <span className="text-foreground">{getValue<string>()}</span>
+          <span className="text-base text-foreground">{getValue<string>()}</span>
         ),
       },
       {
@@ -59,7 +63,7 @@ const MembersList = () => {
         size: 150,
         header: () => <p className="column-title">Created Date</p>,
         cell: ({ getValue }) => (
-          <span className="text-foreground">{formatDate(getValue<string>())}</span>
+          <span className="text-base text-foreground">{formatDate(getValue<string>())}</span>
         ),
       },
       {
@@ -68,7 +72,7 @@ const MembersList = () => {
         size: 150,
         header: () => <p className="column-title">Start Date</p>,
         cell: ({ getValue }) => (
-          <span className="text-foreground">{formatDate(getValue<string>())}</span>
+          <span className="text-base text-foreground">{formatDate(getValue<string>())}</span>
         ),
       },
       {
@@ -77,7 +81,7 @@ const MembersList = () => {
         size: 150,
         header: () => <p className="column-title">End Date</p>,
         cell: ({ getValue }) => (
-          <span className="text-foreground">{formatDate(getValue<string>())}</span>
+          <span className="text-base text-foreground">{formatDate(getValue<string>())}</span>
         ),
       },
       {
@@ -113,7 +117,7 @@ const MembersList = () => {
   const searchFilters = searchQuery
   ? [
     {
-      field: "name",
+      field: "search",
       operator: "contains" as const,
       value: searchQuery,
     }
@@ -173,7 +177,7 @@ const MembersList = () => {
               </SelectContent>
             </Select>
 
-            <CreateButton resource="members" />
+            <CreateButton name="Register Member" resource="members" />
           </div>
         </div>
       </div>
