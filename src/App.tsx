@@ -24,6 +24,7 @@ import MembersList from "@/pages/members/list";
 import CreateMember from "@/pages/members/create";
 import MemberDetails from "@/pages/members/show";
 import PackagesList from "@/pages/packages/list";
+import CreatePackage from "@/pages/packages/create";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
                 {
                   name: "packages",
                   list: "/packages",
+                  create: "/packages/create",
                   meta: {
                     label: "Packages",
                     icon: <DiamondPlus />,
@@ -86,6 +88,7 @@ function App() {
                   </Route>
                   <Route path="packages">
                     <Route index element={<PackagesList />} />
+                    <Route path="create" element={<CreatePackage />} />
                   </Route>
                 </Route>
               </Routes>
